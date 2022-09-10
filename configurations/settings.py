@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #user-defined apps
     'accounts',
+    'sos_alert',
 ]
 
 MIDDLEWARE = [
