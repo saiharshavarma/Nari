@@ -11,7 +11,7 @@ class Profile(models.Model):
         return str(f'{self.user.id}' + ' ' + f'{self.user.username}' + ' ' + f'{self.mobile}')
 
 class EmergencyContact(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=50)    
     mobile = models.IntegerField(validators=[MaxValueValidator(9999999999), MinValueValidator(1000000000)])
 

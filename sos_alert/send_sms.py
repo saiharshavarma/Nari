@@ -7,7 +7,7 @@ from twilio.rest import Client
 # and set the environment variables. See http://twil.io/secure
 def send_alert(name, sender, receiver):
     account_sid = 'AC3a179cf2762ab7ac90d01cc71ad3ab6b'
-    auth_token = '8a0f8c0232868cf9e2f6771a6e5ce366'
+    auth_token = '55789b3efbccffe3e8c15b76072463c8'
     client = Client(account_sid, auth_token)
 
     message = client.messages \
