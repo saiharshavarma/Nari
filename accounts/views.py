@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from .models import Profile
 from django.contrib import messages
 
+
 def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
@@ -12,7 +13,7 @@ def register(request):
         mobile = request.POST['mobile']
         password1 = request.POST['password']
         password2 = request.POST['confirm_password']
-        if password1==password2:
+        if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username taken')
                 return redirect('register')
@@ -20,9 +21,10 @@ def register(request):
                 messages.info(request, 'Email ID already exists')
                 return redirect('register')
             else:
-                user = User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password = password1)
+                user = User.objects.create_user(
+                    first_name=first_name, last_name=last_name, username=username, email=email, password=password1)
                 user.save()
-                profile = Profile.objects.create(user = user, mobile = mobile)
+                profile = Profile.objects.create(user=user, mobile=mobile)
                 profile.save()
                 return redirect('login')
         else:
@@ -31,8 +33,9 @@ def register(request):
     else:
         return render(request, 'accounts/register.html')
 
+
 def login(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
@@ -45,6 +48,7 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
+
 
 def logout(request):
     auth.logout(request)
