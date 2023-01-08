@@ -10,7 +10,9 @@ def register(request):
         last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
+        country_code = request.POST['country_code']
         mobile = request.POST['mobile']
+        mobile = str(country_code) + str(mobile)
         password1 = request.POST['password']
         password2 = request.POST['confirm_password']
         if password1 == password2:
