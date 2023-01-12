@@ -8,6 +8,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile = PhoneNumberField(blank=False)
+    ip = models.TextField(null=True)
+    latitude = models.TextField(null=True)
+    longitude = models.TextField(null=True)
 
     def __str__(self):
         return str(f'{self.user.id}' + ' ' + f'{self.user.username}' + ' ' + f'{self.mobile}')
